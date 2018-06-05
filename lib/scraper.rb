@@ -32,7 +32,7 @@ class Scraper
         profile_data[:linkedin] = url
       elsif url.include? 'github'
         profile_data[:github] = url
-      elsif url != '../' && url != '/' && 
+      elsif url != '../' && url != '/' && !url.include? 'facebook'
         profile_data[:blog] = url
       end
     }
