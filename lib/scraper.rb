@@ -20,6 +20,8 @@ class Scraper
 
   def self.scrape_profile_page(profile_url)
     profile = Nokogiri::HTML(File.read(profile_url))
+    quote = profile.css('div.profile-quote').text.strip
+    bio = profile.css('div.description-holder')[0].text.strip
     profile_data = {}
 
     profile.css('a').each { |link|
@@ -36,12 +38,10 @@ class Scraper
       end
     }
 
-    quote = profile.css('div.profile-quote').text
     if quote != ''
       profile_data[:profile_quote] = quote
     end
 
-    bio = profile.css('div.description-holder')[0].text.strip
     if bio != ''
       profile_data[:bio] = bio
     end
