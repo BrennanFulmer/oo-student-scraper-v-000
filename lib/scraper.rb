@@ -33,8 +33,6 @@ class Scraper
       elsif url.include? 'github'
         profile_data[:github] = url
       elsif url != '../' || url != '/'
-        # do nothing
-      else
         profile_data[:blog] = url
       end
     }
